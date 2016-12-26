@@ -1,0 +1,8 @@
+#!/bin/zsh
+#nonos_sdk
+#python esptool.py -b 921600 -p /dev/tty.usbserial-AL009REL write_flash 0x00000 ~/esp8266/esp8266_nonos_sdk/bin/eagle.flash.bin 0x10000 ~/esp8266/esp8266_nonos_sdk/bin/eagle.irom0text.bin
+
+sdk=~/esp8266/esp8266_nonos_sdk/bin
+com=/dev/tty.usbserial-AL009REL
+./gen_misc.sh
+python esptool.py -b 921600 -p "$com" write_flash 0x00000 "$sdk"/eagle.flash.bin 0x10000 "$sdk"/eagle.irom0text.bin 0x3fc000 "$sdk"/esp_init_data_default.bin 0x3fe000 "$sdk"/blank.bin
